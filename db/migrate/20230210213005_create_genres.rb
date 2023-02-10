@@ -10,6 +10,7 @@ class CreateGenres < ActiveRecord::Migration[7.0]
       t.boolean :open_world
       t.boolean :sports
       t.boolean :turn_based
+      t.boolean :adventure
 
       t.timestamps
     end
