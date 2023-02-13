@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/forums" element={<Forums />} />
           <Route exact path="/forums/:id" element={<Forumpage />} />
           <Route exact path="/forum/new" element={<Newforumpage />} />
-          <Route exact path="/game/new" element={<Newgamepage />} />
+          <Route exact path="/game/new" element={<Newgameform />} />
         </Routes>
       </Router>
     </div>
