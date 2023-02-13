@@ -25,23 +25,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_213422) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "form_id", null: false
+    t.bigint "forum_id", null: false
     t.string "username"
     t.string "comment"
     t.integer "likes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["form_id"], name: "index_comments_on_form_id"
+    t.index ["forum_id"], name: "index_comments_on_forum_id"
   end
 
-  create_table "forms", force: :cascade do |t|
+  create_table "forums", force: :cascade do |t|
     t.bigint "game_id", null: false
     t.string "username"
     t.string "question"
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_forms_on_game_id"
+    t.index ["game_id"], name: "index_forums_on_game_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -50,24 +50,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_213422) do
     t.string "image"
     t.string "bio"
     t.integer "release_date"
+    t.string "genre"
+    t.string "platform"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "genres", force: :cascade do |t|
-    t.bigint "game_id", null: false
-    t.boolean "rts"
-    t.boolean "fps"
-    t.boolean "rpg"
-    t.boolean "action"
-    t.boolean "multiplayer"
-    t.boolean "open_world"
-    t.boolean "sports"
-    t.boolean "turn_based"
-    t.boolean "adventure"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_genres_on_game_id"
   end
 
   create_table "lores", force: :cascade do |t|
@@ -79,17 +65,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_213422) do
     t.index ["game_id"], name: "index_lores_on_game_id"
   end
 
-  create_table "platforms", force: :cascade do |t|
-    t.bigint "game_id", null: false
-    t.boolean "xbox"
-    t.boolean "pc"
-    t.boolean "playstation"
-    t.boolean "switch"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_platforms_on_game_id"
-  end
-
   create_table "tips", force: :cascade do |t|
     t.string "content"
     t.string "link"
@@ -99,21 +74,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_213422) do
     t.index ["game_id"], name: "index_tips_on_game_id"
   end
 
-  create_table "walkthroughs", force: :cascade do |t|
-    t.string "content"
-    t.string "link"
-    t.bigint "game_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_walkthroughs_on_game_id"
-  end
-
   add_foreign_key "characters", "games"
-  add_foreign_key "comments", "forms"
-  add_foreign_key "forms", "games"
-  add_foreign_key "genres", "games"
+  add_foreign_key "comments", "forums"
+  add_foreign_key "forums", "games"
   add_foreign_key "lores", "games"
-  add_foreign_key "platforms", "games"
   add_foreign_key "tips", "games"
-  add_foreign_key "walkthroughs", "games"
 end
