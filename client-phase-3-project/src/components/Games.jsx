@@ -12,15 +12,16 @@ function Games() {
       .then((data) => setGames(data));
   }, []);
 
-  const gameList = games.map((game) => {
-    return <RenderGamesCard key={game.id} game={game}/>
-  })
+    const gameList = games.map((game) => {
+      return <RenderGamesCard key={game.id} game={game}/>
+    })
 
   return (
-  <>
-  <h1>GAMES GAMES GAMES</h1>
-  {gameList}
-  </>
+    <>
+      <h1>GAMES GAMES GAMES</h1>
+      <button>ADD GAME</button><br></br>
+      {gameList}
+    </>
   )
 }
 export default Games;
