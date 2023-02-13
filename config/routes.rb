@@ -7,4 +7,6 @@ resources :games
   get "/games", to: "games#index"
 
   get "/forums", to: "forums#index"
+
+  get "/forums/:id", to: "forums#get_forum_by_id"
 end

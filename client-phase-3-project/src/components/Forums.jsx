@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import FormQuestion from "./Forumquestion"
 
+
 function Forums(){
 
     const [formQuestions, setFormQuestions] = useState([])
@@ -13,15 +14,18 @@ function Forums(){
         .then(data => setFormQuestions(data))
     }, [])
 
+    // // Function to handle the click on a forum question and get the id
+    // function handleFormClick(item) {
+    //     <Link to={`/forums/:{item.id}`}>
+    //     {/* console.log(item.id) */}
+    // }
+
 
     // Iterate through all the questions and display the question
     // and its details
-    const questionIterations = formQuestions.forEach(question =>
-        // console.log(question)
-        <FormQuestion question={question} />
+    const questionIterations = formQuestions.map(question =>
+        <FormQuestion key={question.id} question={question} />
     )
-
-    // Forum.create(game: Game.first.id,username: "Pickles", question: "Why mirage sad?", date: DateTime.now)
 
     return (
         <div>
