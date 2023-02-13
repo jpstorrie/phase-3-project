@@ -18,7 +18,7 @@ function Games() {
 
   return (
   <>
-  <h1>Games Go Here</h1>
+  <h1>GAMES GAMES GAMES</h1>
   {gameList}
   </>
   )
