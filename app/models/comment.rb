@@ -1,3 +1,3 @@
 class Comment < ApplicationRecord
-  belongs_to :form
+  belongs_to :forum
 end
