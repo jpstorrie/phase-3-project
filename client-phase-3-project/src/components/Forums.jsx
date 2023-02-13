@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import FormQuestion from "./Forumquestion"
 
 function Forums(){
 
@@ -16,14 +17,11 @@ function Forums(){
     // Iterate through all the questions and display the question
     // and its details
     const questionIterations = formQuestions.forEach(question =>
-        <div>
-            <h3>{question.question}</h3>
-            <h5>{question.username}</h5>
-            <p>{question.date}</p>
-        </div>
+        // console.log(question)
+        <FormQuestion question={question} />
     )
 
-    // Forum.create(game_id: Game.first.id,username: "Pickles", question: "Why mirage sad?", date: DateTime.now)
+    // Forum.create(game: Game.first.id,username: "Pickles", question: "Why mirage sad?", date: DateTime.now)
 
     return (
         <div>

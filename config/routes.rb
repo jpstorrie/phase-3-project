@@ -5,4 +5,6 @@ resources :games
   # root "articles#index"
 
   get "/games", to: "games#index"
+
+  get "/forums", to: "forums#index"
 end
