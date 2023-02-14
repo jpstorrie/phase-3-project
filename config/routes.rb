@@ -5,5 +5,11 @@ resources :games
   # root "articles#index"
 
   get "/games", to: "games#index"
+
+  get "/forums", to: "forums#index"
+
+  get "/forums/:id", to: "forums#get_forum_by_id"
+
+  patch "/comments/like/:id", to: "comments#patch_like"
   get "/games/:id", to: "games#show"
 end
