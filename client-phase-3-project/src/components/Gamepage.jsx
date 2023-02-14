@@ -1,6 +1,9 @@
 import { useEffect,useState } from "react"
 import {useParams} from "react-router-dom"
 
+import CharacterRenderPage from "./Characterrenderpage"
+import RenderTip from "./Rendertip"
+
 
 function Gamepage(){
     const [game, setGame] = useState()
@@ -18,8 +21,46 @@ function Gamepage(){
             setCharacter(data[1])
             setTips(data[2])
             setLore(data[3])
+            console.log(data[2])
         })
     }, [])
+
+    const characterList = character.map((char, index) => {
+        return <CharacterRenderPage key={index} char={char} />
+    })
+
+    function handleAddCharacter(e){
+        e.preventDefault()
+        const newCharacter = {
+            name: e.target.name.value,
+            image: e.target.image.value,
+            bio: e.target.bio.value,
+            game_id: game.id
+        }
+
+        fetch(`/api/game/character/new`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(newCharacter)
+        })
+        .then(r => r.json())
+        .then(data => {
+            setCharacter((data) => [...character, data])
+            console.log(data)
+        })
+
+        e.target.reset()
+    }
+    let listTip = tips.map((tip, index) => {
+        return <RenderTip key={index} tip={tip} />
+    }) 
+
+    let loreList = lore.map((lor) => {
+        return
+    })
     
     if(!game || !character || !tips || !lore){
         return (
@@ -62,7 +103,19 @@ function Gamepage(){
                     </h2>
                     <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                         <div className="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            <div className="container">
+                            {characterList} 
+                            </div>
+                            <form onSubmit={handleAddCharacter}>
+                                <h4>Add Character</h4>
+                                <label>Name</label>
+                                <input type="text" name="name"></input>
+                                <label>Bio</label>
+                                <input type="text" name="bio"></input>
+                                <label>Image</label>
+                                <input type="text" name="image"></input>
+                                <button>Add</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -86,7 +139,7 @@ function Gamepage(){
                     </h2>
                     <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
                         <div className="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        {listTip}
                         </div>
                     </div>
                 </div>
