@@ -11,6 +11,9 @@ class GamesController < ApplicationController
     def show
         game = Game.all.find(params[:id])
         character = game.characters
-        render json: [character, game], status: :ok
+        tips = game.tips
+        lore = game.lores
+
+        render json: [game, character, tips, lore], status: :ok
     end
 end
