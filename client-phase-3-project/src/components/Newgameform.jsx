@@ -17,11 +17,13 @@ function Newgameform(){
         e.target.fps.checked ? genres.push("fps") : genres;
         e.target.action.checked ? genres.push("action") : genres;
         e.target.adventure.checked ? genres.push("adventure") : genres;
-        e.target.fps.checked ? genres.push("fps") : genres;
-        e.target.fps.checked ? genres.push("fps") : genres;
-        e.target.fps.checked ? genres.push("fps") : genres;
-        e.target.fps.checked ? genres.push("fps") : genres;
-        e.target.fps.checked ? genres.push("fps") : genres;
+        e.target.rts.checked ? genres.push("rts") : genres;
+        e.target.turn_based.checked ? genres.push("turn_based") : genres;
+        e.target.open_world.checked ? genres.push("open_world") : genres;
+        e.target.rpg.checked ? genres.push("rpg") : genres;
+        e.target.horror.checked ? genres.push("horror") : genres;
+        e.target.multiplayer.checked ? genres.push("multiplayer") : genres;
+        const genreString = genres.join(", ")
         
 
         const gameNew = {
@@ -29,11 +31,23 @@ function Newgameform(){
             story: e.target.story.value,
             image: e.target.image.value,
             bio: e.target.bio.value,
-            release_year: e.target.year.value,
-            platforms: platformString,
-
+            release_date: e.target.year.value,
+            platform: platformString,
+            genre: genreString
         }
         console.log(gameNew)
+        fetch("/api/game/new", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+            },
+            body: JSON.stringify(gameNew)
+        })
+        .then(r => r.json())
+        .then(data => console.log(data))
+
+        e.target.reset();
     }
 
     return(
@@ -67,47 +81,47 @@ function Newgameform(){
         <br></br>
         <h2>Platform</h2>
         <h6>Check all that apply.</h6>
-        <input type="checkbox" className="btn-check" id="btn-check-outlined" autocomplete="off" name="xbox" />
-        <label className="btn btn-outline-primary" for="btn-check-outlined" >XBOX</label>
+        <input type="checkbox" className="btn-check" id="btn-check-outlined" autoComplete="off" name="xbox" />
+        <label className="btn btn-outline-primary" htmlFor="btn-check-outlined" >XBOX</label>
         
-        <input type="checkbox" className="btn-check" id="btn-check-2-outlined" autocomplete="off" name="playstation"/>
-        <label className="btn btn-outline-primary" for="btn-check-2-outlined">PLAYSTAION</label>
+        <input type="checkbox" className="btn-check" id="btn-check-2-outlined" autoComplete="off" name="playstation"/>
+        <label className="btn btn-outline-primary" htmlFor="btn-check-2-outlined">PLAYSTAION</label>
         
-        <input type="checkbox" className="btn-check" id="btn-check-3-outlined" autocomplete="off" name="switch"/>
-        <label className="btn btn-outline-primary" for="btn-check-3-outlined">SWITCH</label>
+        <input type="checkbox" className="btn-check" id="btn-check-3-outlined" autoComplete="off" name="switch"/>
+        <label className="btn btn-outline-primary" htmlFor="btn-check-3-outlined">SWITCH</label>
 
-        <input type="checkbox" className="btn-check" id="btn-check-4-outlined" autocomplete="off" name="pc"/>
-        <label className="btn btn-outline-primary" for="btn-check-4-outlined">PC</label>
+        <input type="checkbox" className="btn-check" id="btn-check-4-outlined" autoComplete="off" name="pc"/>
+        <label className="btn btn-outline-primary" htmlFor="btn-check-4-outlined">PC</label>
         
         <br></br>
         <h2>Genre</h2>
         <h6>Check all that apply.</h6>
-        <input type="checkbox" className="btn-check" id="btn-check-5-outlined" autocomplete="off" name="fps" />
-        <label className="btn btn-outline-primary" for="btn-check-5-outlined">FPS</label>
+        <input type="checkbox" className="btn-check" id="btn-check-5-outlined" autoComplete="off" name="fps" />
+        <label className="btn btn-outline-primary" htmlFor="btn-check-5-outlined">FPS</label>
         
-        <input type="checkbox" className="btn-check" id="btn-check-6-outlined" autocomplete="off" name="action"/>
-        <label className="btn btn-outline-primary" for="btn-check-6-outlined">ACTION</label>
+        <input type="checkbox" className="btn-check" id="btn-check-6-outlined" autoComplete="off" name="action"/>
+        <label className="btn btn-outline-primary" htmlFor="btn-check-6-outlined">ACTION</label>
         
-        <input type="checkbox" className="btn-check" id="btn-check-7-outlined" autocomplete="off" name="adventure"/>
-        <label className="btn btn-outline-primary" for="btn-check-7-outlined">ADVENTURE</label>
+        <input type="checkbox" className="btn-check" id="btn-check-7-outlined" autoComplete="off" name="adventure"/>
+        <label className="btn btn-outline-primary" htmlFor="btn-check-7-outlined">ADVENTURE</label>
 
-        <input type="checkbox" className="btn-check" id="btn-check-8-outlined" autocomplete="off" name="rts"/>
-        <label className="btn btn-outline-primary" for="btn-check-8-outlined">RTS</label>
+        <input type="checkbox" className="btn-check" id="btn-check-8-outlined" autoComplete="off" name="rts"/>
+        <label className="btn btn-outline-primary" htmlFor="btn-check-8-outlined">RTS</label>
         
-        <input type="checkbox" className="btn-check" id="btn-check-9-outlined" autocomplete="off" name="turn-based"/>
-        <label className="btn btn-outline-primary" for="btn-check-9-outlined">TURN-BASED</label>
+        <input type="checkbox" className="btn-check" id="btn-check-9-outlined" autoComplete="off" name="turn_based"/>
+        <label className="btn btn-outline-primary" htmlFor="btn-check-9-outlined">TURN-BASED</label>
         <br></br>
-        <input type="checkbox" className="btn-check" id="btn-check-10-outlined" autocomplete="off" name="open world"/>
-        <label className="btn btn-outline-primary" for="btn-check-10-outlined">OPEN WORLD</label>
+        <input type="checkbox" className="btn-check" id="btn-check-10-outlined" autoComplete="off" name="open_world"/>
+        <label className="btn btn-outline-primary" htmlFor="btn-check-10-outlined">OPEN WORLD</label>
 
-        <input type="checkbox" className="btn-check" id="btn-check-11-outlined" autocomplete="off" name="rpg"/>
-        <label className="btn btn-outline-primary" for="btn-check-11-outlined">RPG</label>
+        <input type="checkbox" className="btn-check" id="btn-check-11-outlined" autoComplete="off" name="rpg"/>
+        <label className="btn btn-outline-primary" htmlFor="btn-check-11-outlined">RPG</label>
 
-        <input type="checkbox" className="btn-check" id="btn-check-12-outlined" autocomplete="off" name="horror"/>
-        <label className="btn btn-outline-primary" for="btn-check-12-outlined">HORROR</label>
+        <input type="checkbox" className="btn-check" id="btn-check-12-outlined" autoComplete="off" name="horror"/>
+        <label className="btn btn-outline-primary" htmlFor="btn-check-12-outlined">HORROR</label>
 
-        <input type="checkbox" className="btn-check" id="btn-check-13-outlined" autocomplete="off" name="multiplayer"/>
-        <label className="btn btn-outline-primary" for="btn-check-13-outlined">Multiplayer</label>
+        <input type="checkbox" className="btn-check" id="btn-check-13-outlined" autoComplete="off" name="multiplayer"/>
+        <label className="btn btn-outline-primary" htmlFor="btn-check-13-outlined">Multiplayer</label>
 
         <br></br>
         <br></br>

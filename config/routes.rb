@@ -12,4 +12,6 @@ resources :games
 
   patch "/comments/like/:id", to: "comments#patch_like"
   get "/games/:id", to: "games#show"
+
+  post "/game/new", to: "games#add_new"
 end
