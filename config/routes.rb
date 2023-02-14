@@ -11,5 +11,6 @@ resources :games
   get "/forums/:id", to: "forums#get_forum_by_id"
 
   patch "/comments/like/:id", to: "comments#patch_like"
+
   get "/games/:id", to: "games#show"
 end
