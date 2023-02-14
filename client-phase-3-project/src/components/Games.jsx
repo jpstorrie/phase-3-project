@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {NavLink} from "react-router-dom"
 
 import RenderGamesCard from "./ReandergamesCard";
 
@@ -19,7 +20,10 @@ function Games() {
   return (
     <>
       <h1>GAMES GAMES GAMES</h1>
+      <NavLink
+      to="/game/new">
       <button>ADD GAME</button><br></br>
+      </NavLink>
       {gameList}
     </>
   )
