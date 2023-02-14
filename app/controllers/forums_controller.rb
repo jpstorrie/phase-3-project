@@ -7,6 +7,6 @@ class ForumsController < ApplicationController
 
     def get_forum_by_id
         forum = Forum.find(params[:id])
-        render json: forum
+        render json: [forum, forum.comments], status: :ok
     end
 end

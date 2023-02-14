@@ -14,12 +14,6 @@ function Forums(){
         .then(data => setFormQuestions(data))
     }, [])
 
-    // // Function to handle the click on a forum question and get the id
-    // function handleFormClick(item) {
-    //     <Link to={`/forums/:{item.id}`}>
-    //     {/* console.log(item.id) */}
-    // }
-
 
     // Iterate through all the questions and display the question
     // and its details

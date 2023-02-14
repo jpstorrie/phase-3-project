@@ -9,4 +9,6 @@ resources :games
   get "/forums", to: "forums#index"
 
   get "/forums/:id", to: "forums#get_forum_by_id"
+
+  patch "/comments/like/:id", to: "comments#patch_like"
 end
