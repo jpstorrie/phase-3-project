@@ -1,7 +1,7 @@
-function RenderLore({lor}){
+function RenderLore({lor, handleLoreDelete}){
 
     function handleClick(){
-        
+        handleLoreDelete(lor.id)
         fetch(`/api/game/lore/delete/${lor.id}`, {
             method: 'DELETE'
         })

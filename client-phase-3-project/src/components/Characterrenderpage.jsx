@@ -1,8 +1,8 @@
 
-function CharacterRenderPage({char}){
+function CharacterRenderPage({char, handleCharacterDelete}){
 
     function handleClick(){
-        
+        handleCharacterDelete(char.id)
         fetch(`/api/game/character/delete/${char.id}`, {
             method: 'DELETE'
         })

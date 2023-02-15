@@ -1,8 +1,8 @@
 
-function RenderTip({tip}){
+function RenderTip({tip, handleTipDelete}){
 
     function handleClick(){
-        
+        handleTipDelete(tip.id)
         fetch(`/api/game/tips/delete/${tip.id}`, {
             method: 'DELETE'
         })

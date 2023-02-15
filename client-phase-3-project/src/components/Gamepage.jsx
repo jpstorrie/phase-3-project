@@ -28,8 +28,15 @@ function Gamepage(){
     //// Character list create/reader //////
     ////////////////////////////////////////
     const characterList = character.map((char, index) => {
-        return <CharacterRenderPage key={index} char={char} />
+        return <CharacterRenderPage key={index} char={char} handleCharacterDelete={handleCharacterDelete}/>
     })
+
+    function handleCharacterDelete(id){
+        const filteredCharacters = character.filter((char) => {
+            return char.id !== id
+        })
+        setCharacter(filteredCharacters)
+    }
 
     function handleAddCharacter(e){
         e.preventDefault()
@@ -60,8 +67,15 @@ function Gamepage(){
     //// Tips list create/reader ///////////
     ////////////////////////////////////////
     let listTip = tips.map((tip, index) => {
-        return <RenderTip key={index} tip={tip} />
+        return <RenderTip key={index} tip={tip} handleTipDelete={handleTipDelete}/>
     }) 
+
+    function handleTipDelete(id){
+        const filteredTips = tips.filter((tip) => {
+            return tip.id !== id
+        })
+        setTips(filteredTips)
+    }
 
     function handleAddTip(e){
         e.preventDefault()
@@ -92,8 +106,15 @@ function Gamepage(){
     ////////////////////////////////////////
 
     let loreList = lore.map((lor, index) => {
-        return <RenderLore key={index} lor={lor} />
+        return <RenderLore key={index} lor={lor} handleLoreDelete={handleLoreDelete} />
     })
+    
+    function handleLoreDelete(id){
+        const filteredLore = lore.filter((lor) => {
+            return lor.id !== id
+        })
+        setLore(filteredLore)
+    }
 
     function handleAddLore(e){
         e.preventDefault()
