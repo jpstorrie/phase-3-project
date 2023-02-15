@@ -24,4 +24,6 @@ resources :games
 
 
   post "/game/new", to: "games#add_new"
+
+  post "/game/character/new", to: "characters#add_new" 
 end
