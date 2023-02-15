@@ -47,7 +47,7 @@ function CommentForm({ cFVis, setFVis, question, setComments, comments }) {
       </div>
 
       <div className="input-group mb-3">
-        <span className="input-group-text">Comment</span>
+        <span className="input-group-text">Comment/Answer</span>
         <textarea
           onChange={handleCommentChange}
           required
