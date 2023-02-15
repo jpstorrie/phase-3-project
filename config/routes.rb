@@ -20,4 +20,6 @@ resources :games
   
   post "/comments/new", to: "comments#post_comment"
 
+
+  post "/game/new", to: "games#add_new"
 end
