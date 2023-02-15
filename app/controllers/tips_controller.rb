@@ -6,6 +6,11 @@ class TipsController < ApplicationController
         render json: add_character, status: :ok
     end
 
+    def destroy_tip
+        tip_destroy = Tip.find(params[:id])
+        tip_destroy.destroy
+    end
+
     private
 
     def post_params

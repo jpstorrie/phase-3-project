@@ -6,6 +6,11 @@ class LoresController < ApplicationController
         render json: add_lore, status: :ok
     end
 
+    def destroy_lore
+        lore_destroy = Lore.find(params[:id])
+        lore_destroy.destroy
+    end
+
     private
 
     def post_params
