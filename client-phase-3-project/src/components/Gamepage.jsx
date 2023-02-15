@@ -24,7 +24,9 @@ function Gamepage(){
             console.log(data[2])
         })
     }, [])
-
+    ////////////////////////////////////////
+    //// Character list create/reader //////
+    ////////////////////////////////////////
     const characterList = character.map((char, index) => {
         return <CharacterRenderPage key={index} char={char} />
     })
@@ -48,15 +50,23 @@ function Gamepage(){
         })
         .then(r => r.json())
         .then(data => {
-            setCharacter((data) => [...character, data])
-            console.log(data)
+            setCharacter(() => [...character, data])
         })
 
         e.target.reset()
     }
+
+    ////////////////////////////////////////
+    //// Tips list create/reader ///////////
+    ////////////////////////////////////////
     let listTip = tips.map((tip, index) => {
         return <RenderTip key={index} tip={tip} />
     }) 
+
+
+    ////////////////////////////////////////
+    //// Lore list create/reader ///////////
+    ////////////////////////////////////////
 
     let loreList = lore.map((lor) => {
         return
@@ -140,6 +150,12 @@ function Gamepage(){
                     <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
                         <div className="accordion-body">
                         {listTip}
+                        <h4>Add Tip</h4>
+                                <label>Tip</label>
+                                <input type="text" name="tip"></input>
+                                <label>link</label>
+                                <input type="text" name="tipLink"></input>
+                                <button>Add</button>
                         </div>
                     </div>
                 </div>
