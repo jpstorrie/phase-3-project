@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom"
 
 import CharacterRenderPage from "./Characterrenderpage"
 import RenderTip from "./Rendertip"
+import RenderLore from "./Renderlore"
 
 
 function Gamepage(){
@@ -21,7 +22,6 @@ function Gamepage(){
             setCharacter(data[1])
             setTips(data[2])
             setLore(data[3])
-            console.log(data[2])
         })
     }, [])
     ////////////////////////////////////////
@@ -63,14 +63,62 @@ function Gamepage(){
         return <RenderTip key={index} tip={tip} />
     }) 
 
+    function handleAddTip(e){
+        e.preventDefault()
+
+        const addTip = {
+            content: e.target.tip.value,
+            link: e.target.tipLink.value,
+            game_id: game.id
+        }
+
+        fetch('/api/game/tips/new', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(addTip)
+        })
+        .then(r => r.json())
+        .then(data => setTips(() => [...tips, data]))
+        
+        e.target.reset()
+    }
+
 
     ////////////////////////////////////////
     //// Lore list create/reader ///////////
     ////////////////////////////////////////
 
-    let loreList = lore.map((lor) => {
-        return
+    let loreList = lore.map((lor, index) => {
+        return <RenderLore key={index} lor={lor} />
     })
+
+    function handleAddLore(e){
+        e.preventDefault()
+
+        const addLore = {
+            content: e.target.lore.value,
+            link: e.target.loreLink.value,
+            game_id: game.id
+        }
+
+        fetch('/api/game/lore/new', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(addLore)
+        })
+        .then(r => r.json())
+        .then(data => setLore(() => [...lore, data]))
+    }
+
+    ////////////////////////////////////////
+    //// Loading  Screen  //////////////////
+    ////////////////////////////////////////
     
     if(!game || !character || !tips || !lore){
         return (
@@ -137,7 +185,15 @@ function Gamepage(){
                     </h2>
                     <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
                         <div className="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            {loreList}
+                            <form onSubmit={handleAddLore}>
+                                <h4>Add Lore</h4>
+                                <label>Lore</label>
+                                <input type="text" name="lore"></input>
+                                <label>link</label>
+                                <input type="text" name="loreLink"></input>
+                                <button>Add</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -150,12 +206,14 @@ function Gamepage(){
                     <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
                         <div className="accordion-body">
                         {listTip}
-                        <h4>Add Tip</h4>
+                            <form onSubmit={handleAddTip}>
+                                <h4>Add Tip</h4>
                                 <label>Tip</label>
                                 <input type="text" name="tip"></input>
                                 <label>link</label>
                                 <input type="text" name="tipLink"></input>
                                 <button>Add</button>
+                            </form>
                         </div>
                     </div>
                 </div>
