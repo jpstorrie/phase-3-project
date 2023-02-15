@@ -6,12 +6,20 @@ resources :games
 
   get "/games", to: "games#index"
 
+  get "/games/:id", to: "games#show"
+
   get "/forums", to: "forums#index"
 
   get "/forums/:id", to: "forums#get_forum_by_id"
 
+  post "/forums/new", to: "forums#post_forum"
+
+  delete "/forums/delete/:id", to: "forums#destroy_forum"
+
   patch "/comments/like/:id", to: "comments#patch_like"
-  get "/games/:id", to: "games#show"
+  
+  post "/comments/new", to: "comments#post_comment"
+
 
   post "/game/new", to: "games#add_new"
 

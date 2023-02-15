@@ -13,16 +13,24 @@ function Navbar(){
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <NavLink
-                                to='/' 
+                                to='/'
                                 >
                                 <h3 className="nav-link active" aria-current="page" >GAMES</h3>
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">FORUMS</a>
+                                <NavLink
+                                to='/forums'
+                                >
+                                <h3 className="nav-link" aria-current="page" >FORUMS</h3>
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">SUPPORT</a>
+                                <NavLink
+                                to='/support'
+                                >
+                                <h3 className="nav-link" aria-current="page" >SUPPORT</h3>
+                                </NavLink>
                             </li>
                         </ul>
                         <form className="d-flex" role="search">
