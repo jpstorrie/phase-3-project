@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import FormQuestion from "./Forumquestion"
+import {NavLink} from "react-router-dom"
 
 
 function Forums(){
@@ -24,6 +25,7 @@ function Forums(){
     return (
         <div>
         <h1>Forums</h1>
+        <h5><NavLink to="/forums/new">Ask a Question</NavLink></h5>
         {questionIterations}
         </div>
     )

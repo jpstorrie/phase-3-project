@@ -18,7 +18,7 @@ function CommentCard({comment}){
     return(
         <>
         <h3>{comment.comment}</h3>
-        <h3>{comment.username}</h3>
+        <h5>{comment.username}</h5>
         <button onClick={()=> handleClick()}>{likes}</button>
         </>
     )
