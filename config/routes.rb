@@ -20,6 +20,8 @@ resources :games
   
   post "/comments/new", to: "comments#post_comment"
 
+  delete "/comments/delete/:id", to: "comments#delete_comment"
+
 
   post "/game/new", to: "games#add_new"
 end

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function CommentForm({ question, setComments, comments }) {
+function CommentForm({ cFVis, setFVis, question, setComments, comments }) {
   const initialValues = {
     forum_id: question.id,
     comment: "",
@@ -27,6 +27,7 @@ function CommentForm({ question, setComments, comments }) {
   function handleSubmit(e) {
     e.preventDefault();
     handlePost(formData);
+    setFVis(!cFVis);
   }
 
   return (

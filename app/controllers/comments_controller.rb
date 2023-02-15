@@ -15,6 +15,12 @@ class CommentsController < ApplicationController
         render json: new_comment
     end
 
+    def delete_comment
+        comment = Comment.where(id: params[:id])
+        comment.destroy_all
+        render json: comment
+    end
+
     private
 
     def post_params
