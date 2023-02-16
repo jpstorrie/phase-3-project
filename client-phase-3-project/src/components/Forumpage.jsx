@@ -48,11 +48,16 @@ function Forumpage() {
 
   return (
     <div>
-      <h1>{question.username}</h1>
-      <h1>{question.question}</h1>
-      <h1>{question.date}</h1>
-      <button onClick={() => setFormVis(!commentFormVis)}>Add Comment</button>
-      <button onClick={handleDelete}>DELETE🗑</button>
+      <div className="card shadow-sm ms-2 me-2">
+        <h4 className="card-header">{question.username}</h4>
+        <div className="card-body">
+        <h5 className="card-title">{question.question}</h5>
+        <p className="card-text font-weight-light">{question.date}</p>
+        <button className="btn btn-primary me-1" onClick={() => setFormVis(!commentFormVis)}>Add Comment</button>
+        <button className="btn btn-danger" onClick={handleDelete}>DELETE🗑</button>
+      </div>
+    </div>
+    <h3 className="ms-3">Answers and Comments:</h3>
       {commentFormVis === true ? (
         <CommentForm
           cFVis={commentFormVis}

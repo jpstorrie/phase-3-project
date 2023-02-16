@@ -1,14 +1,20 @@
 //For each question to be displayed on the Forums page
 
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function FormQuestion({ question }) {
+  const navigate = useNavigate()
+
   return (
-    <NavLink to={`/forums/${question.id}`}>
-      <h3>{question.question}</h3>
-      <h5>{question.username}</h5>
-      <p>{question.date}</p>
-    </NavLink>
+    <div onClick={()=>navigate(`/forums/${question.id}`)} className="card ms-2 m-2 me-2 text-decoration-none shadow-sm mb-3 bg-white rounded">
+        <h4 className="card-header">{question.username}</h4>
+        <div className="card-body">
+        <h5 className="card-title">{question.question}</h5>
+        <p className="card-text font-weight-light">{question.date}</p>
+        {/* <button className="btn btn-primary me-1" >Add Comment</button>
+        <button className="btn btn-danger">DELETE🗑</button> */}
+      </div>
+      </div>
   );
 }
 export default FormQuestion;

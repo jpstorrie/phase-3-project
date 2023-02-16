@@ -6,6 +6,7 @@ import {NavLink} from "react-router-dom"
 function Forums(){
 
     const [formQuestions, setFormQuestions] = useState([])
+    // const navigate = useNavigate()
 
 
     // Fetch all questions and set the state of formQuestions
@@ -24,8 +25,9 @@ function Forums(){
 
     return (
         <div>
-        <h1>Forums</h1>
-        <h5><NavLink to="/forums/new">Ask a Question</NavLink></h5>
+        <h1 className="m-1">FORUMS</h1>
+        {/* <h5 onClick={()=> navigate("/forums/new")} className="font-weight-bolder">+Ask a Question</h5> */}
+        <NavLink to="/forums/new" className="m-3" >+Ask a Question</NavLink>
         {questionIterations}
         </div>
     )

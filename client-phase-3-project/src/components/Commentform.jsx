@@ -32,7 +32,7 @@ function CommentForm({ cFVis, setFVis, question, setComments, comments }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="input-group mb-3">
+      <div className="input-group b-4 p-2">
         <span className="input-group-text">Username</span>
         <input
           onChange={handleCommentChange}
@@ -46,7 +46,7 @@ function CommentForm({ cFVis, setFVis, question, setComments, comments }) {
         />
       </div>
 
-      <div className="input-group mb-3">
+      <div className="input-group b-4 p-2">
         <span className="input-group-text">Comment/Answer</span>
         <textarea
           onChange={handleCommentChange}
@@ -59,7 +59,7 @@ function CommentForm({ cFVis, setFVis, question, setComments, comments }) {
         ></textarea>
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit" className="btn btn-success m-2">Submit</button>
     </form>
   );
 }

@@ -24,12 +24,14 @@ function CommentCard({comment, onDeleteComment, setComments, comments}){
     }
 
     return(
-        <>
-        <h3>{comment.comment}</h3>
-        <h5>{comment.username}</h5>
-        <button onClick={()=> handleClick()}>{likes}</button>
-        <button onClick={()=> handleDelete()}>🗑</button>
-        </>
+<div className="card m-2 ms-5 me-5 shadow-sm">
+  <div className="card-header">{comment.username}</div>
+  <div className="card-body">
+    <h5 className="card-title">{comment.comment}</h5>
+    <a href="#" onClick={()=> handleClick()} className="btn btn-primary me-1">Likes:{likes}</a>
+    <a href="#" onClick={()=> handleDelete()} className="btn btn-danger">🗑</a>
+  </div>
+</div>
     )
 
 }

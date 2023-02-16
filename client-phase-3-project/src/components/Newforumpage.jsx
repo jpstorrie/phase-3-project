@@ -52,7 +52,7 @@ function Newforumpage() {
   }, []);
   const gameOptions = games.map((game) => {
     return (
-      <option key={game.id} value={game.id}>
+      <option key={game.id} className="dropdown-item" value={game.id}>
         {game.name}
       </option>
     );
@@ -64,7 +64,8 @@ function Newforumpage() {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="input-group mb-3">
+
+      <div className="input-group b-4 p-2">
         <span className="input-group-text">Username</span>
         <input
           required
@@ -78,19 +79,21 @@ function Newforumpage() {
         />
       </div>
 
+      <div className="input-group b-4 p-2">
       <select
         onChange={handleChange}
         required
         name="game_id"
-        className="form-select"
+        className="form-select dropdown"
         aria-label="Default select example">
         <option selected disabled hidden>
           Select Game
         </option>
         {gameOptions}
       </select>
+      </div>
 
-      <div className="input-group mb-3">
+      <div className="input-group b-4 p-2">
         <span className="input-group-text">Question</span>
         <textarea
           required
@@ -103,7 +106,7 @@ function Newforumpage() {
         ></textarea>
       </div>
 
-      <button type="submit">Submit</button>
+      <button className="btn btn-success ms-3" type="submit">Submit</button>
     </form>
   );
 }
