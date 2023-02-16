@@ -26,4 +26,14 @@ resources :games
   post "/game/new", to: "games#add_new"
 
   post "/game/character/new", to: "characters#add_new" 
+
+  delete "/game/character/delete/:id", to: "characters#destroy_character"
+
+  post "/game/tips/new", to: "tips#add_new"
+
+  delete "/game/tips/delete/:id", to: "tips#destroy_tip"
+  
+  post "/game/lore/new", to: "lores#add_new"
+
+  delete "/game/lore/delete/:id", to: "lores#destroy_lore"
 end
