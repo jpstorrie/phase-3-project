@@ -11,8 +11,6 @@ function FormQuestion({ question }) {
         <div className="card-body">
         <h4 className="card-title">{question.question}</h4>
         <p className="card-text font-weight-light">{question.date}</p>
-        {/* <button className="btn btn-primary me-1" >Add Comment</button>
-        <button className="btn btn-danger">DELETE🗑</button> */}
       </div>
       </div>
   );
