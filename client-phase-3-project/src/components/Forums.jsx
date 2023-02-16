@@ -6,6 +6,7 @@ import {NavLink} from "react-router-dom"
 function Forums(){
 
     const [formQuestions, setFormQuestions] = useState([])
+    const [search, setSearch] = useState("")
     // const navigate = useNavigate()
 
 
@@ -16,17 +17,26 @@ function Forums(){
         .then(data => setFormQuestions(data))
     }, [])
 
+    function handleChange(e){
+        setSearch(e.target.value)
+    }
+
+    const filteredQuestions = formQuestions.filter(question => {
+        if (question.question.toLowerCase().includes(search.toLowerCase()) || question.username.toLowerCase().includes(search.toLowerCase())){
+            return question.question
+        }
+    })
 
     // Iterate through all the questions and display the question
     // and its details
-    const questionIterations = formQuestions.map(question =>
+    const questionIterations = filteredQuestions.map(question =>
         <FormQuestion key={question.id} question={question} />
     )
 
     return (
-        <div>
+        <div className="mx-2">
         <h1 className="m-1">FORUMS</h1>
-        {/* <h5 onClick={()=> navigate("/forums/new")} className="font-weight-bolder">+Ask a Question</h5> */}
+        <input onChange={handleChange} className="input-group-text mx-2" type="search" placeholder="Search" aria-label="Search" />
         <NavLink to="/forums/new" className="m-3" >+Ask a Question</NavLink>
         {questionIterations}
         </div>

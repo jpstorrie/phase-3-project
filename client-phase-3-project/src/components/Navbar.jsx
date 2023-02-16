@@ -1,6 +1,9 @@
 import {NavLink} from "react-router-dom"
+import {useState} from "react"
 
 function Navbar(){
+    const [activeNav, setActive] = useState(true)
+
     return(
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -15,28 +18,17 @@ function Navbar(){
                                 <NavLink
                                 to='/'
                                 >
-                                <h3 className="nav-link active" aria-current="page" >GAMES</h3>
+                                <h3 onClick={()=> setActive(!activeNav)} className={activeNav ? "nav-link active" : "nav-link"} aria-current="page" >GAMES</h3>
                                 </NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink
                                 to='/forums'
                                 >
-                                <h3 className="nav-link" aria-current="page" >FORUMS</h3>
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink
-                                to='/support'
-                                >
-                                <h3 className="nav-link" aria-current="page" >SUPPORT</h3>
+                                <h3 onClick={()=> setActive(!activeNav)} className={activeNav ? "nav-link" : "nav-link active"} aria-current="page" >FORUMS</h3>
                                 </NavLink>
                             </li>
                         </ul>
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search Game</button>
-                        </form>
                     </div>
                 </div>
             </nav>

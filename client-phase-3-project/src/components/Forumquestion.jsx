@@ -7,9 +7,9 @@ function FormQuestion({ question }) {
 
   return (
     <div onClick={()=>navigate(`/forums/${question.id}`)} className="card ms-2 m-2 me-2 text-decoration-none shadow-sm mb-3 bg-white rounded">
-        <h4 className="card-header">{question.username}</h4>
+        <p className="card-header">{question.username}</p>
         <div className="card-body">
-        <h5 className="card-title">{question.question}</h5>
+        <h4 className="card-title">{question.question}</h4>
         <p className="card-text font-weight-light">{question.date}</p>
         {/* <button className="btn btn-primary me-1" >Add Comment</button>
         <button className="btn btn-danger">DELETE🗑</button> */}
