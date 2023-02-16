@@ -87,7 +87,7 @@ function Newgameform(){
         <label className="btn btn-outline-primary" htmlFor="btn-check-outlined" >XBOX</label>
         
         <input type="checkbox" className="btn-check" id="btn-check-2-outlined" autoComplete="off" name="playstation"/>
-        <label className="btn btn-outline-primary" htmlFor="btn-check-2-outlined">PLAYSTAION</label>
+        <label className="btn btn-outline-primary" htmlFor="btn-check-2-outlined">PLAYSTATION</label>
         
         <input type="checkbox" className="btn-check" id="btn-check-3-outlined" autoComplete="off" name="switch"/>
         <label className="btn btn-outline-primary" htmlFor="btn-check-3-outlined">SWITCH</label>
