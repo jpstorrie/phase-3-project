@@ -49,7 +49,7 @@ function Newgameform(){
         .then(data => console.log(data))
 
         e.target.reset();
-        
+        navigate('/')
     }
 
     return(
@@ -63,7 +63,7 @@ function Newgameform(){
 
         <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon2">Release year</span>
-            <input type="number" min={4} max={4} className="form-control" placeholder="yyyy"  aria-describedby="basic-addon1" name="year"/>
+            <input type="number"  className="form-control" placeholder="yyyy"  aria-describedby="basic-addon1" name="year"/>
         </div>
 
         <div className="input-group mb-3">

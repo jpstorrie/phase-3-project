@@ -135,6 +135,8 @@ function Gamepage(){
         })
         .then(r => r.json())
         .then(data => setLore(() => [...lore, data]))
+
+        e.target.reset()
     }
 
     ////////////////////////////////////////
