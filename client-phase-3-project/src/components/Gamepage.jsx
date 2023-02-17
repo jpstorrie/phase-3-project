@@ -169,7 +169,8 @@ function Gamepage(){
                     <div className="col-md-8">
                         <div className="card-body">
                             <h5 className="card-title">{game.name}</h5>
-                            <p className="card-text">{game.bio}</p>
+                            <p className="card-text">BIO: {game.bio}</p>
+                            <p className="card-text">STORY: {game.story}</p>
                             <p className="card-text"><small className="text-muted">Release date: {game.release_date}</small></p>
                         </div>
                     </div>
